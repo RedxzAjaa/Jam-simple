@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Red Clock</title>
+<title>Redxz Simple Clock</title>
 <style>
   body {
     margin: 0;
@@ -15,6 +15,7 @@
     background-color: black;
     font-family: 'Arial Black', sans-serif;
   }
+  
   .title-text {
     color: red;
     font-size: 24px;
@@ -22,7 +23,9 @@
     letter-spacing: 3px;
     text-shadow: 0 0 10px red;
     text-transform: uppercase;
+    transition: 0.3s;
   }
+  
   .clock-container {
     padding: 20px;
     background: #000;
@@ -34,6 +37,7 @@
     align-items: center;
     margin-bottom: 20px;
   }
+  
   .btn-fs {
     padding: 10px 20px;
     background: transparent;
@@ -46,9 +50,21 @@
     box-shadow: 0 0 10px red;
     transition: 0.3s;
   }
+  
   .btn-fs:hover {
     background: red;
     color: black;
+  }
+
+  /* KEAJAIBAN DI SINI: Menyembunyikan elemen saat fullscreen */
+  :fullscreen .title-text,
+  :fullscreen .btn-fs {
+    display: none;
+  }
+  
+  /* Opsional: Menghilangkan margin bawah jam saat fullscreen agar tetap presisi di tengah */
+  :fullscreen .clock-container {
+    margin-bottom: 0;
   }
 </style>
 </head>
