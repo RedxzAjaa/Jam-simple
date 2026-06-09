@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redxz Simple Clock</title>
+<title>Redxz Auto Rotate Clock</title>
 <style>
   body {
     margin: 0;
@@ -14,6 +14,7 @@
     align-items: center;
     background-color: black;
     font-family: 'Arial Black', sans-serif;
+    overflow: hidden;
   }
   
   .title-text {
@@ -35,6 +36,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    transition: transform 0.5s ease;
   }
   
   .btn-fs {
@@ -47,29 +49,26 @@
     font-family: sans-serif;
     text-transform: uppercase;
     box-shadow: 0 0 10px red;
-    transition: 0.3s;
   }
-  
-  .btn-fs:hover {
-    background: red;
-    color: black;
+  .btn-fs:hover { background: red; color: black; }
+
+  /* KEAJAIBAN: Deteksi orientasi HP secara otomatis */
+  @media (orientation: landscape) {
+    .clock-container {
+      transform: rotate(90deg) scale(1.5);
+    }
   }
 
-  /* KEAJAIBAN: Saat Fullscreen, hapus flex-direction column agar jam jadi pusat utama */
+  /* Fullscreen: Sembunyikan elemen */
   :fullscreen {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: black;
   }
-
   :fullscreen .title-text,
   :fullscreen .btn-fs {
     display: none;
-  }
-  
-  :fullscreen .clock-container {
-    margin-bottom: 0; /* Hapus margin agar benar-benar di tengah */
   }
 </style>
 </head>
@@ -78,22 +77,16 @@
   <div class="title-text">JAM WIB</div>
 
   <div class="clock-container">
-    <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:240px;height:80px;pointer-events:none;" src="https://www.clocklink.com/html5embed.php?clock=004&timezone=Indonesia_Jakarta&color=red&size=240&Title=&Message=&Target=&From=2026,1,1,0,0,0&Color=red"></iframe>
+    <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:240px;height:80px;pointer-events:none;" src="https://www.clocklink.com/html5embed.php?clock=004&timezone=Indonesia_Jakarta&color=red&size=240&From=2026,1,1,0,0,0&Color=red"></iframe>
   </div>
 
-  <button class="btn-fs" onclick="toggleFullscreen()">FULLSCREEN</button>
+  <button class="btn-fs" onclick="document.documentElement.requestFullscreen()">FULLSCREEN</button>
 
   <script>
-    function toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        }
-      }
-    }
+    // Memastikan layar tetap simetris saat rotasi
+    window.addEventListener("orientationchange", function() {
+        location.reload(); // Refresh ringan agar posisi CSS menyesuaikan
+    });
   </script>
-
 </body>
 </html>
