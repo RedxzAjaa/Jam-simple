@@ -23,7 +23,6 @@
     letter-spacing: 3px;
     text-shadow: 0 0 10px red;
     text-transform: uppercase;
-    transition: 0.3s;
   }
   
   .clock-container {
@@ -56,15 +55,21 @@
     color: black;
   }
 
-  /* KEAJAIBAN DI SINI: Menyembunyikan elemen saat fullscreen */
+  /* KEAJAIBAN: Saat Fullscreen, hapus flex-direction column agar jam jadi pusat utama */
+  :fullscreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+  }
+
   :fullscreen .title-text,
   :fullscreen .btn-fs {
     display: none;
   }
   
-  /* Opsional: Menghilangkan margin bawah jam saat fullscreen agar tetap presisi di tengah */
   :fullscreen .clock-container {
-    margin-bottom: 0;
+    margin-bottom: 0; /* Hapus margin agar benar-benar di tengah */
   }
 </style>
 </head>
