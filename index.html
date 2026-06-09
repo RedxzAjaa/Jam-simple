@@ -3,7 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redxz Auto Rotate Clock</title>
+<title>RedxzSenn Archive Web<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redxz Simple Clock</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    font-family: 'Arial Black', sans-serif;
+  }
+  
+  .title-text {
+    color: red;
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px red;
+    text-transform: uppercase;
+  }
+  
+  .clock-container {
+    padding: 20px;
+    background: #000;
+    border: 2px solid red;
+    border-radius: 20px;
+    box-shadow: 0 0 25px red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .btn-fs {
+    padding: 10px 20px;
+    background: transparent;
+    color: red;
+    border: 1px solid red;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px red;
+    transition: 0.3s;
+  }
+  
+  .btn-fs:hover {
+    background: red;
+    color: black;
+  }
+
+  /* KEAJAIBAN: Saat Fullscreen, hapus flex-direction column agar jam jadi pusat utama */
+  :fullscreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+  }
+
+  :fullscreen .title-text,
+  :fullscreen .btn-fs {
+    display: none;
+  }
+  
+  :fullscreen .clock-container {
+    margin-bottom: 0; /* Hapus margin agar benar-benar di tengah */
+  }
+</style>
+</head>
+<body>
+
+  <div class="title-text">JAM WIB</div>
+
+  <div class="clock-container">
+    <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:240px;height:80px;pointer-events:none;" src="https://www.clocklink.com/html5embed.php?clock=004&timezone=Indonesia_Jakarta&color=red&size=240&Title=&Message=&Target=&From=2026,1,1,0,0,0&Color=red"></iframe>
+  </div>
+
+  <button class="btn-fs" onclick="toggleFullscreen()">FULLSCREEN</button>
+
+  <script>
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>Auto Rotate Clock</title>
 <style>
   body {
     margin: 0;
